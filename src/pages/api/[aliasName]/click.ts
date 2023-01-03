@@ -17,6 +17,8 @@ export default async function (req: NextRequest) {
 	const aliasName = searchParams.get("aliasName") as string;
 	const alias = await getAlias(aliasName);
 
+	return new Response(JSON.stringify(alias), { status: 201 });
+
 	if (!alias) return redirect(`/view/${aliasName}`);
 	return redirect(alias.url);
 }
