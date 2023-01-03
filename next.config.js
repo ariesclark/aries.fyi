@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+	reactStrictMode: true,
+	experimental: {
+		appDir: true,
+		runtime: "experimental-edge"
+	},
+	rewrites: async () => ({
+		fallback: [
+			{
+				source: "/:path*",
+				destination: "/api/:path*/click"
+			}
+		]
+	})
+};
 
-module.exports = nextConfig
+// eslint-disable-next-line no-undef
+module.exports = nextConfig;

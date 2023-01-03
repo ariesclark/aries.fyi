@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    *::-webkit-scrollbar {
+        @apply bg-transparent w-0
+    }
+}
