@@ -19,6 +19,6 @@ export default async function (req: NextRequest) {
 
 	return new Response(JSON.stringify(alias), { status: 201 });
 
-	if (!alias) return redirect(`/view/${aliasName}`);
-	return redirect(alias.url);
+	// if (!alias) return redirect(`/view/${aliasName}`);
+	// return redirect(alias.url);
 }
