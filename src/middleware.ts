@@ -11,7 +11,7 @@ export const config = {
 export async function middleware(request: NextRequest) {
 	const url = new URL(request.url);
 	const pathname = url.pathname.slice(1, url.pathname.length);
-	if (pathname.startsWith("_next")) return;
+	if (pathname.startsWith("_next") || !pathname) return;
 
 	const alias = await getAlias(pathname);
 	return NextResponse.redirect(alias ? alias.url : `/view/${pathname}`);
