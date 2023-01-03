@@ -7,6 +7,6 @@ export interface CreateAliasOptions {
 	targetUrl: string;
 }
 
-export function getAliasURL(aliasName: string, full: boolean = false) {
+export function getAliasURL(aliasName: string, full: boolean = true) {
 	return `${full ? "https://" : ""}aries.fyi/${aliasName}`;
 }
