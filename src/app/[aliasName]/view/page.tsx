@@ -1,3 +1,3 @@
 export function AliasViewPage() {
-	return <div>aa</div>;
+	return <div>aaa</div>;
 }
