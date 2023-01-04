@@ -1,6 +1,6 @@
 import { kv } from "cloudflare-kv-storage";
 
-import { Alias, CreateAliasOptions } from ".";
+import { Alias, CreateAliasOptions, validateAliasName } from ".";
 
 function getAliasKey(aliasName: string) {
 	return `/${encodeURI(aliasName)}`;
@@ -17,7 +17,7 @@ export async function createAlias(
 ): Promise<boolean> {
 	const { targetUrl } = options;
 
-	if (!targetUrl || typeof targetUrl !== "string") return false;
+	if (!targetUrl || typeof targetUrl !== "string" || !validateAliasName(aliasName)) return false;
 
 	return kv
 		.set(getAliasKey(aliasName), targetUrl)

@@ -3,6 +3,7 @@
 import { twMerge } from "tailwind-merge";
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { randomString } from "~/random";
 import { createAlias, getAlias } from "~/api/client";
@@ -74,7 +75,9 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 };
 
 export default function RootIndexPage() {
-	const [aliasName, setAliasName] = useState(randomString());
+	const searchParams = useSearchParams();
+
+	const [aliasName, setAliasName] = useState(searchParams.get("aliasName") || randomString());
 	const [aliasNameStatus, setAliasNameStatus] = useState<TextInputStatus>(null);
 
 	const [targetUrl, setTargetUrl] = useState("");
