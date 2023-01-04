@@ -77,7 +77,9 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 export default function RootIndexPage() {
 	const searchParams = useSearchParams();
 
-	const [aliasName, setAliasName] = useState(searchParams.get("aliasName") || randomString());
+	const [aliasName, setAliasName] = useState(searchParams.get("aliasName") ?? "");
+	useEffect(() => setAliasName((aliasName) => aliasName || randomString()), []);
+
 	const [aliasNameStatus, setAliasNameStatus] = useState<TextInputStatus>(null);
 
 	const [targetUrl, setTargetUrl] = useState("");
