@@ -17,7 +17,7 @@ export function validateAliasName(aliasName: string) {
 	return (
 		(aliasName &&
 			typeof aliasName === "string" &&
-			aliasName.match(/^[a-zA-Z0-9]{3,16}$/) &&
+			aliasName.match(/^[a-z0-9-]{3,16}$/) &&
 			!aliasName.match(/^\/_next\/.+$|^\/$|^\/api\/.+$/i)) ||
 		false
 	);
